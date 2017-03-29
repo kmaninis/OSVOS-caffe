@@ -34,9 +34,11 @@ Visit our [project page](http://www.vision.ee.ethz.ch/~cvlsegmentation) for acce
 
 2. Run `demo.m`.
 
-3. Enjoy! :) 
+3. You can test all sequences of DAVIS validation set, by running `test_all.m`.
 
 It is possible to work with all sequences of DAVIS just by creating a soft link (`ln -s /path/to/DAVIS/`) in the root folder of the project.
+
+ Enjoy! :) 
 
 ### Citation
 
