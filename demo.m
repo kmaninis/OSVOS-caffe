@@ -5,7 +5,7 @@ cd(osvos_root);
 
 % Set name and number of online training iters
 name = 'drift-chicane';
-num_iters = 500;
+num_iters = 500; % set higher for better results (eg. 2000)
 
 % Set the OSVOS parameters.
 set_params(name);
