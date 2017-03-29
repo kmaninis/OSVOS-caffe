@@ -1,0 +1,19 @@
+net: "./solvers/train_val_template.prototxt"
+test_iter: 0
+test_interval: 1000000
+# lr for fine-tuning should be lower than when starting from scratch
+#debug_info: true
+base_lr: 0.00000001
+lr_policy: "step"
+gamma: 0.1
+iter_size: 5
+# stepsize should also be lower, as we're closer to being done
+stepsize: 2000
+max_iter: 30000
+display: 20
+momentum: 0.9
+weight_decay: 0.0002
+snapshot: 1000
+snapshot_prefix: "cpr17_flsc_flsc_template"
+# uncomment the following to default to CPU mode solving
+# solver_mode: CPU 

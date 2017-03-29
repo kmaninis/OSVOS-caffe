@@ -1,0 +1,3 @@
+models/*.caffemodel
+models/*.solverstate
+
