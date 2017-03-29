@@ -1,3 +1,5 @@
+*.png
+set_params.m
 models/*.caffemodel
 models/*.solverstate
 
