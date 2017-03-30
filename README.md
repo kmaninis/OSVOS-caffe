@@ -11,14 +11,14 @@ While the results of the paper were obtained by this code, we also provide a Ten
 ### Installation:
 
 1. Clone the OSVOS-caffe repository
-  ```Shell
-  git clone https://github.com/kmaninis/OSVOS-caffe.git
-  ```
+   ```Shell
+   git clone https://github.com/kmaninis/OSVOS-caffe.git
+   ```
 2. Install the Caffe version under `caffe-osvos/` along with standard dependencies, pycaffe and matcaffe. Caffe would need to be built with support for Python layers, in case you would like to use the Python API *(TODO)*. cuDNN is not necessary.
-  ```
-  # In your Makefile.config, make sure to have this line uncommented
-  WITH_PYTHON_LAYER := 1
-  ```
+   ```
+   # In your Makefile.config, make sure to have this line uncommented
+   WITH_PYTHON_LAYER := 1
+   ```
 3. Download the parent model from [here](https://data.vision.ee.ethz.ch/kmaninis/share/OSVOS/Downloads/models/OSVOS_parent_model.zip) (55 MB) and put it under `models/`.
 
 4. Optionally download the contour model for contour snapping from [here](https://data.vision.ee.ethz.ch/kmaninis/share/OSVOS/Downloads/models/OSVOS_contour_model.zip) (55 MB) and put it under `models/`.
@@ -33,7 +33,7 @@ While the results of the paper were obtained by this code, we also provide a Ten
 
 2. Run `demo.m`.
 
-3. You can test all sequences of DAVIS validation set, by running `test_all.m`.
+3. You can test all sequences of DAVIS validation set, by running `test_all.m`, once the pre-trained models are available under `models/`.
 
 It is possible to work with all sequences of DAVIS just by creating a soft link (`ln -s /path/to/DAVIS/`) in the root folder of the project.
 
