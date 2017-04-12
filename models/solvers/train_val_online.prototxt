@@ -122,7 +122,7 @@ layer { type: "Crop" name: 'crop4' bottom: 'side-multi4-up' bottom: 'data' top: 
 layer { type: "Deconvolution" name: 'upsample16_' bottom: 'conv5_3_16' top: 'side-multi5-up'
   param { lr_mult: 0 decay_mult: 1 } param { lr_mult: 0 decay_mult: 0}
   convolution_param { kernel_size: 32 stride: 16 num_output: 16 } }
-layer { type: "Crop" name: 'crop5' bottom: 'side-multi5-up' bottom: 'data' top: 'upside-multi5'  crop_param { axis: 2 offset: 4 offset: 4 }}
+layer { type: "Crop" name: 'crop5' bottom: 'side-multi5-up' bottom: 'data' top: 'upside-multi5'  crop_param { axis: 2 offset: 8 offset: 8 }}
 
 ### Concat and multiscale weight layer ###
 layer { name: "concat" bottom: "upside-multi2"  bottom: "upside-multi3" bottom: "upside-multi4" bottom: "upside-multi5" top: "concat-upscore" type: "Concat"
