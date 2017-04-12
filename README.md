@@ -37,6 +37,18 @@ While the results of the paper were obtained by this code, we also provide a Ten
 
 It is possible to work with all sequences of DAVIS just by creating a soft link (`ln -s /path/to/DAVIS/`) in the root folder of the project.
 
+### Training the parent network (optional)
+
+1. All necessary files are under `src/parent`. So, `cd src/parent`.
+
+2. Download the pre-trained vgg model by running `./download_pretrained_vgg.sh`
+
+3. Augment the data. In the paper we used flipping and scaling into 0.5, 0.8 and 1.0 of the original scale. Your image and ground truth pairs are specified in `solvers/train_pair.txt`.
+
+4. Under `solvers` edit the `data_root_dir` of `train_val*.prototxt`.
+
+5. Finally, train the parent model with `python solve_cluster.py`. You need pycaffe for this step, so don't forget to `make pycaffe` when installing Caffe.
+
  Enjoy! :) 
 
 ### Citation
