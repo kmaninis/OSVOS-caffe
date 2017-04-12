@@ -2,9 +2,10 @@ from __future__ import division
 import numpy as np
 import sys
 import os
-#os.chdir('/srv/glusterfs/kmaninis/caffe_experiments/DAVIS-mask-separate-mixed-neg-norot-ext-finetune/')
-caffe_root = '/home/eec/Documents/external/deep_learning/OSVOS-matcaffe/caffe_osvos/'
-#caffe_root = '/home/kmaninis/scratch/hed_mod/' 
+
+caffe_root = '../../caffe-osvos/'
+gpu_id = 0
+
 sys.path.insert(0, caffe_root + 'python')
 import caffe
 print 'Caffe imported!!'
@@ -33,15 +34,19 @@ def interp_surgery(net, layers):
         filt = upsample_filt(h)
         net.params[l][0].data[range(m), range(k), :, :] = filt
 
-gpu_id = 0
+
 print "gpu_id is: "+str(gpu_id)
 caffe.set_device(gpu_id)
-
 caffe.set_mode_gpu()
 
-model_name = '/home/eec/Documents/external/deep_learning/OSVOS-matcaffe/models/OSVOS_parent.caffemodel'
-solver_name = '/home/eec/Documents/external/deep_learning/OSVOS-matcaffe/models/solvers/solver_drift-chicane_python.prototxt'
-solver = caffe.SGDSolver(solver_name)
-#solver.restore('drive_iter_18000.solverstate')
-solver.net.copy_from(model_name)
-solver.step(2000)
+model_name = '../../models/5stage-vgg.caffemodel'
+iters = (15000, 15000, 20000)
+for i in range(0,len(iters)):
+	solver_name = './solvers/solver_step'+str(i+1)+'.prototxt'
+	solver = caffe.SGDSolver(solver_name)
+	#solver.restore('osvos_parent_step1_iter_10000.solverstate')
+	solver.net.copy_from(model_name)
+	interp_layers = [k for k in solver.net.params.keys() if 'up' in k]
+	interp_surgery(solver.net, interp_layers)
+	solver.step(iters[i])
+	model_name = './osvos_parent_step'+str(i+1)+'_iter_'+str(iters[i])+'.caffemodel'

@@ -1,4 +1,4 @@
-caffe_root = '/home/eec/Documents/external/deep_learning/OSVOS-matcaffe/caffe_osvos/'
+caffe_root = '../../caffe_osvos/'
 import sys
 sys.path.insert(0, caffe_root + 'python')
 import caffe
@@ -17,6 +17,7 @@ class OSVOSDataLayer(caffe.Layer):
         self.mean = np.array((104.00699, 116.66877, 122.67892), dtype=np.float32)
         self.random = params.get('randomize', True)
         self.seed = params.get('seed', None)
+        self.pair_list = params.get('pair_list')
 
         # two tops: data and label
         if len(top) != 2:
@@ -26,7 +27,7 @@ class OSVOSDataLayer(caffe.Layer):
             raise Exception("Do not define a bottom.")
 
         # load indices for images and labels
-        split_f  = '{}/train_pairs.txt'.format(self.data_root_dir)
+        split_f  = self.pair_list
         self.indices = open(split_f, 'r').read().splitlines()
         self.idx = 0
 
@@ -41,6 +42,8 @@ class OSVOSDataLayer(caffe.Layer):
 
     def reshape(self, bottom, top):
         # load image + label image pair
+        #print(self.idx)
+        #sys.stdout.flush()
         self.data = self.load_image(self.indices[self.idx])
         self.label = self.load_label(self.indices[self.idx])
 
