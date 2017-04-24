@@ -33,7 +33,7 @@ build_file{end+1} = fullfile(osvos_root, 'src', 'misc', 'mex_ucm_rescale.cpp');
 
 %% Define the compiler
 gcc_compiler = 'g++';
-gcc_string = ['GCC=''' gcc_compiler ''' '];
+gcc_string = ['GCC=''', gcc_compiler, ''' ', 'CXXFLAGS=''', '-std=c++11 -fPIC', ''' '];
 
 %% Build everything
 if ~exist(fullfile(osvos_root, 'lib'),'dir')
