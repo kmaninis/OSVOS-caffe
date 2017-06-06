@@ -4,7 +4,7 @@ Visit our [project page](http://www.vision.ee.ethz.ch/~cvlsegmentation) for acce
 ![OSVOS](doc/ims/osvos.png)
 
 This is the implementation of our work `One-Shot Video Object Segmentation (OSVOS)`, for semi-supervised video object segmentation.
-OSVOS is based on a fully convolutional neural network architecture that is able to successively transfer generic semantic information, learned on ImageNet, to the task of foreground segmentation, and finally to learning the appearance of a single annotated object of the test sequence (hence one-shot). Experiments on DAVIS show that OSVOS is faster than currently available techniques and improves the state of the art by a significant margin (79.8% vs 68.0%).
+OSVOS is based on a fully convolutional neural network architecture that is able to successively transfer generic semantic information, learned on ImageNet, to the task of foreground segmentation, and finally to learning the appearance of a single annotated object of the test sequence (hence one-shot). Experiments on DAVIS 2016 show that OSVOS is faster than currently available techniques and improves the state of the art by a significant margin (79.8% vs 68.0%).
 
 While the results of the paper were obtained by this code, we also provide a TensorFlow implementation of OSVOS: [OSVOS-TensorFlow](https://github.com/scaelles/OSVOS-TensorFlow).
 
@@ -33,9 +33,9 @@ While the results of the paper were obtained by this code, we also provide a Ten
 
 2. Run `demo.m`.
 
-3. You can test all sequences of DAVIS validation set, by running `test_all.m`, once the pre-trained models are available under `models/`.
+3. You can test all sequences of DAVIS 2016 validation set, by running `test_all.m`, once the pre-trained models are available under `models/`.
 
-It is possible to work with all sequences of DAVIS just by creating a soft link (`ln -s /path/to/DAVIS/`) in the root folder of the project.
+It is possible to work with all sequences of DAVIS 2016 just by creating a soft link (`ln -s /path/to/DAVIS/`) in the root folder of the project.
 
 ### Training the parent network (optional)
 
