@@ -124,7 +124,7 @@ layer { name: 'score-dsn_2' type: "Convolution" bottom: 'conv2_2_16' top: 'score
 layer { type: "Deconvolution" name: 'upsample_2' bottom: 'score-dsn_2' top: 'score-dsn_2-up'
   param { lr_mult: 0 decay_mult: 1 } param { lr_mult: 0 decay_mult: 0}
   convolution_param { kernel_size: 4 stride: 2 num_output: 1 } }
-layer { type: "Crop" name: 'crop' bottom: 'score-dsn_2-up' bottom: 'data' top: 'upscore-dsn_2' }
+layer { type: "Crop" name: 'crop2_prep' bottom: 'score-dsn_2-up' bottom: 'data' top: 'upscore-dsn_2' }
 layer { type: "SigmoidCrossEntropyBalanceLoss" bottom: "upscore-dsn_2" bottom: "label" top:"dsn2_loss"  loss_weight: 1}
 
 ### DSN conv 3 ###
@@ -134,7 +134,7 @@ layer { name: 'score-dsn_3' type: "Convolution" bottom: 'conv3_3_16' top: 'score
 layer { type: "Deconvolution" name: 'upsample_4' bottom: 'score-dsn_3' top: 'score-dsn_3-up'
   param { lr_mult: 0 decay_mult: 1 } param { lr_mult: 0 decay_mult: 0}
   convolution_param { kernel_size: 8 stride: 4 num_output: 1 } }
-layer { type: "Crop" name: 'crop' bottom: 'score-dsn_3-up' bottom: 'data' top: 'upscore-dsn_3' }
+layer { type: "Crop" name: 'crop3_prep' bottom: 'score-dsn_3-up' bottom: 'data' top: 'upscore-dsn_3' crop_param { axis: 2 offset: 2 offset: 2 }}
 layer { type: "SigmoidCrossEntropyBalanceLoss" bottom: "upscore-dsn_3" bottom: "label" top:"dsn3_loss"  loss_weight: 1}
 
 ###DSN conv 4###
@@ -144,7 +144,7 @@ layer { name: 'score-dsn_4' type: "Convolution" bottom: 'conv4_3_16' top: 'score
 layer { type: "Deconvolution" name: 'upsample_8' bottom: 'score-dsn_4' top: 'score-dsn_4-up'
   param { lr_mult: 0 decay_mult: 1 } param { lr_mult: 0 decay_mult: 0}
   convolution_param { kernel_size: 16 stride: 8 num_output: 1 } }
-layer { type: "Crop" name: 'crop' bottom: 'score-dsn_4-up' bottom: 'data' top: 'upscore-dsn_4' }
+layer { type: "Crop" name: 'crop4_prep' bottom: 'score-dsn_4-up' bottom: 'data' top: 'upscore-dsn_4' crop_param { axis: 2 offset: 4 offset: 4 }}
 layer { type: "SigmoidCrossEntropyBalanceLoss" bottom: "upscore-dsn_4" bottom: "label" top:"dsn4_loss"  loss_weight: 1}
 
 ###DSN conv 5###
@@ -154,7 +154,7 @@ layer { name: 'score-dsn_5' type: "Convolution" bottom: 'conv5_3_16' top: 'score
 layer { type: "Deconvolution" name: 'upsample_16' bottom: 'score-dsn_5' top: 'score-dsn_5-up'
   param { lr_mult: 0 decay_mult: 1 } param { lr_mult: 0 decay_mult: 0}
   convolution_param { kernel_size: 32 stride: 16 num_output: 1 } }
-layer { type: "Crop" name: 'crop' bottom: 'score-dsn_5-up' bottom: 'data' top: 'upscore-dsn_5' }
+layer { type: "Crop" name: 'crop5_prep' bottom: 'score-dsn_5-up' bottom: 'data' top: 'upscore-dsn_5' crop_param { axis: 2 offset: 8 offset: 8 }}
 layer { type: "SigmoidCrossEntropyBalanceLoss" bottom: "upscore-dsn_5" bottom: "label" top:"dsn5_loss"  loss_weight: 1}
 
 ### Multiple conv 2 ###
