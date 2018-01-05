@@ -8,6 +8,8 @@ OSVOS is based on a fully convolutional neural network architecture that is able
 
 While the results of the paper were obtained by this code, we also provide a TensorFlow implementation of OSVOS: [OSVOS-TensorFlow](https://github.com/scaelles/OSVOS-TensorFlow).
 
+#### NEW: PyTorch implementation also available: [OSVOS-PyTorch](https://github.com/kmaninis/OSVOS-PyTorch)!
+
 ### Installation:
 
 1. Clone the OSVOS-caffe repository
