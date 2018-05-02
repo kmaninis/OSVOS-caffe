@@ -403,7 +403,7 @@ else
 endif
 INCLUDE_DIRS += $(BLAS_INCLUDE)
 LIBRARY_DIRS += $(BLAS_LIB)
-
+LIBRARY_DIRS += /usr/lib/x86_64-linux-gnu/hdf5/serial/
 LIBRARY_DIRS += $(LIB_BUILD_DIR)
 
 # Automatic dependency generation (nvcc is handled separately)
