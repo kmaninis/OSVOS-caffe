@@ -16,6 +16,10 @@ While the results of the paper were obtained by this code, we also provide a Ten
    ```Shell
    git clone https://github.com/kmaninis/OSVOS-caffe.git
    ```
+   
+   Skip the following line if you are using ubuntu 14.04!
+   Compatibility with Ubuntu 16.04: If (and only if) you wish to run the code with Ubuntu 16.04, please run `./ubuntu_16.sh` inside `caffe-osvos`.
+
 2. Install the Caffe version under `caffe-osvos/` along with standard dependencies, pycaffe and matcaffe. Caffe would need to be built with support for Python layers, in case you would like to use the Python API *(TODO)*. cuDNN is not necessary.
    ```
    # In your Makefile.config, make sure to have this line uncommented
