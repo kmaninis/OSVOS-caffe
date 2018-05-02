@@ -198,7 +198,8 @@ void convMax( float *I, float *O, int h, int w, int d, int r ) {
 
 // B=convConst(type,A,r,s); fast 2D convolutions (see convTri.m and convBox.m)
 void mexFunction( int nlhs, mxArray* plhs[], int nrhs, const mxArray* prhs[] ) {
-  int *ns, ms[3], nDims, d, m, r, s; float *A, *B, p;
+  int nDims, d, m, r, s; float *A, *B, p;
+  mwSize *ns, ms[3];
   mxClassID id; char type[1024];
 
   // error checking on arguments
@@ -206,12 +207,13 @@ void mexFunction( int nlhs, mxArray* plhs[], int nrhs, const mxArray* prhs[] ) {
   if(nlhs > 1) mexErrMsgTxt("One output expected.");
   nDims = mxGetNumberOfDimensions(prhs[1]);
   id = mxGetClassID(prhs[1]);
-  ns = (int*) mxGetDimensions(prhs[1]);
+  ns = (mwSize*) mxGetDimensions(prhs[1]);
   d = (nDims == 3) ? ns[2] : 1;
   m = (ns[0] < ns[1]) ? ns[0] : ns[1];
+  // mexPrintf("%d, %d\n",ns[0], ns[1]);
   if( (nDims!=2 && nDims!=3) || id!=mxSINGLE_CLASS || m<4 )
     mexErrMsgTxt("A must be a 4x4 or bigger 2D or 3D float array.");
-
+ 
   // extract inputs
   if(mxGetString(prhs[0],type,1024))
     mexErrMsgTxt("Failed to get type.");
